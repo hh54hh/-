@@ -339,7 +339,29 @@ export default function Layout() {
                   </Button>
                 );
               })}
-              <div className="pt-2 border-t border-gray-200">
+              <div className="pt-2 border-t border-gray-200 space-y-1">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3 text-blue-600 hover:bg-blue-50"
+                  onClick={() => {
+                    handleBackupDownload();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  <Download className="h-4 w-4" />
+                  تنزيل نسخة احتياطية
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3 text-green-600 hover:bg-green-50"
+                  onClick={() => {
+                    handleBackupPrint();
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  <FileText className="h-4 w-4" />
+                  طباعة النسخة الاحتياطية
+                </Button>
                 <Button
                   variant="ghost"
                   className="w-full justify-start gap-3 text-red-600 hover:bg-red-50"
