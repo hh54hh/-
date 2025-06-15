@@ -60,44 +60,44 @@ export const MemberPrintTemplateOfficial: React.FC<
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-          
+
           .print-container {
             display: block !important;
           }
-          
+
           #member-print-content {
             page-break-inside: avoid;
             break-inside: avoid;
           }
-          
+
           .course-group, .diet-group {
             page-break-inside: avoid;
             break-inside: avoid;
             margin-bottom: 8px;
           }
-          
+
           .course-item, .diet-item {
             page-break-inside: avoid;
             break-inside: avoid;
           }
-          
+
           .print-section {
             page-break-inside: avoid;
             break-inside: avoid;
           }
-          
+
           .member-info-grid {
             page-break-inside: avoid;
             break-inside: avoid;
           }
-          
+
           .content-columns {
             display: flex !important;
             flex-direction: row !important;
             page-break-inside: avoid;
             break-inside: avoid;
           }
-          
+
           @page {
             margin: 12mm;
             size: A4;
@@ -161,22 +161,25 @@ export const MemberPrintTemplateOfficial: React.FC<
               </p>
             </div>
             <div style={{ flexShrink: 0 }}>
-              <img
-                src="/placeholder.svg"
-                alt="شعار الصالة"
+              <div
                 style={{
                   width: "70px",
                   height: "70px",
                   borderRadius: "50%",
                   border: "3px solid #000000",
-                  objectFit: "cover",
-                  backgroundColor: "#f8f9fa",
+                  backgroundColor: "#f97316",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  color: "white",
+                  backgroundImage:
+                    "linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%)",
                 }}
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = "none";
-                }}
-              />
+              >
+                💪
+              </div>
             </div>
           </div>
 
