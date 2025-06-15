@@ -152,10 +152,10 @@ export default function Courses() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-1 gap-4">
         <Card>
           <CardContent className="p-4">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               <div className="p-2 bg-blue-100 rounded-lg">
                 <GraduationCap className="h-5 w-5 text-blue-600" />
               </div>
@@ -163,41 +163,6 @@ export default function Courses() {
                 <p className="text-sm text-gray-600">إجمالي الكورسات</p>
                 <p className="text-2xl font-bold text-gray-900">
                   {courses.length}
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <Users className="h-5 w-5 text-green-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">المشتركين الحاليين</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {Object.values(enrolledCounts).reduce(
-                    (total, count) => total + count,
-                    0,
-                  )}
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <Calendar className="h-5 w-5 text-purple-600" />
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">اليوم</p>
-                <p className="text-lg font-bold text-gray-900">
-                  {new Date().toLocaleDateString("en-GB")}
                 </p>
               </div>
             </div>

@@ -53,509 +53,623 @@ export const MemberPrintTemplateOfficial: React.FC<
   };
 
   return (
-    <div className="print-container" style={{ display: "none" }}>
-      <div
-        id="member-print-content"
-        className="bg-white font-arabic"
-        style={{
-          width: "210mm",
-          minHeight: "297mm",
-          margin: "0 auto",
-          fontSize: "14px",
-          lineHeight: "1.4",
-          direction: "rtl",
-          fontFamily: "Arial, sans-serif",
-          backgroundColor: "white",
-          color: "#000000",
-          padding: "20mm",
-        }}
-      >
-        {/* Header with Gym Name Only */}
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: "30px",
-            paddingBottom: "20px",
-            borderBottom: "3px solid #000000",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "32px",
-              fontWeight: "bold",
-              color: "#000000",
-              margin: "0 0 10px 0",
-              letterSpacing: "2px",
-            }}
-          >
-            صالة حسام لكمال الأجسام والرشاقة
-          </h1>
-          <p
-            style={{
-              fontSize: "18px",
-              color: "#000000",
-              margin: "0",
-              fontWeight: "normal",
-            }}
-          >
-            بطاقة عضوية رسمية
-          </p>
-        </div>
+    <>
+      <style>{`
+        @media print {
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
 
-        {/* Member Information - Horizontal Layout */}
+          .print-container {
+            display: block !important;
+          }
+
+          #member-print-content {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .course-group, .diet-group {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 8px;
+          }
+
+          .course-item, .diet-item {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .print-section {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .member-info-grid {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .content-columns {
+            display: flex !important;
+            flex-direction: row !important;
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          @page {
+            margin: 12mm;
+            size: A4;
+          }
+        }
+      `}</style>
+      <div className="print-container" style={{ display: "none" }}>
         <div
+          id="member-print-content"
+          className="bg-white font-arabic"
           style={{
-            marginBottom: "30px",
-            padding: "20px",
-            border: "2px solid #000000",
-            backgroundColor: "#f8f9fa",
+            width: "210mm",
+            minHeight: "297mm",
+            margin: "0 auto",
+            fontSize: "13px",
+            lineHeight: "1.3",
+            direction: "rtl",
+            fontFamily: "Arial, sans-serif",
+            backgroundColor: "white",
+            color: "#000000",
+            padding: "12mm",
+            pageBreakInside: "avoid",
           }}
         >
-          <h2
+          {/* Header with Gym Name and Logo */}
+          <div
+            className="print-section"
             style={{
-              fontSize: "18px",
-              fontWeight: "bold",
-              color: "#000000",
-              marginBottom: "15px",
               textAlign: "center",
-              borderBottom: "1px solid #000000",
-              paddingBottom: "8px",
-            }}
-          >
-            المعلومات الشخصية
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
-              gap: "20px",
+              marginBottom: "25px",
+              paddingBottom: "15px",
+              borderBottom: "3px solid #000000",
+              display: "flex",
               alignItems: "center",
+              justifyContent: "center",
+              gap: "20px",
+              pageBreakInside: "avoid",
             }}
           >
-            <div style={{ textAlign: "center" }}>
-              <div
+            <div style={{ flex: 1, textAlign: "right" }}>
+              <h1
                 style={{
+                  fontSize: "28px",
                   fontWeight: "bold",
-                  fontSize: "14px",
-                  marginBottom: "5px",
                   color: "#000000",
+                  margin: "0 0 8px 0",
+                  letterSpacing: "1px",
                 }}
               >
-                الاسم الكامل
-              </div>
-              <div
+                صالة حسام لكمال الأجسام والرشاقة
+              </h1>
+              <p
                 style={{
-                  padding: "8px",
-                  border: "1px solid #000000",
-                  backgroundColor: "white",
-                  fontSize: "14px",
-                  fontWeight: "600",
+                  fontSize: "16px",
+                  color: "#000000",
+                  margin: "0",
+                  fontWeight: "normal",
                 }}
               >
-                {member.name}
-              </div>
+                بطاقة عضوية رسمية
+              </p>
             </div>
-
-            <div style={{ textAlign: "center" }}>
+            <div style={{ flexShrink: 0 }}>
               <div
                 style={{
+                  width: "70px",
+                  height: "70px",
+                  borderRadius: "50%",
+                  border: "3px solid #000000",
+                  backgroundColor: "#f97316",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "24px",
                   fontWeight: "bold",
-                  fontSize: "14px",
-                  marginBottom: "5px",
-                  color: "#000000",
+                  color: "white",
+                  backgroundImage:
+                    "linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fdba74 100%)",
                 }}
               >
-                رقم الهاتف
-              </div>
-              <div
-                style={{
-                  padding: "8px",
-                  border: "1px solid #000000",
-                  backgroundColor: "white",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                }}
-              >
-                {member.phone}
-              </div>
-            </div>
-
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "14px",
-                  marginBottom: "5px",
-                  color: "#000000",
-                }}
-              >
-                العمر
-              </div>
-              <div
-                style={{
-                  padding: "8px",
-                  border: "1px solid #000000",
-                  backgroundColor: "white",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                }}
-              >
-                {member.age} سنة
-              </div>
-            </div>
-
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "14px",
-                  marginBottom: "5px",
-                  color: "#000000",
-                }}
-              >
-                تاريخ الانضمام
-              </div>
-              <div
-                style={{
-                  padding: "8px",
-                  border: "1px solid #000000",
-                  backgroundColor: "white",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                }}
-              >
-                {formatDate(member.createdAt)}
+                💪
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Main Content - Two Column Layout */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "30px",
-            marginBottom: "30px",
-          }}
-        >
-          {/* Right Column - Training Programs */}
+          {/* Member Information */}
           <div
+            className="print-section member-info-grid"
             style={{
+              marginBottom: "25px",
+              padding: "15px",
               border: "2px solid #000000",
-              padding: "20px",
-              backgroundColor: "white",
+              backgroundColor: "#f8f9fa",
+              pageBreakInside: "avoid",
             }}
           >
-            <h3
+            <h2
               style={{
                 fontSize: "16px",
                 fontWeight: "bold",
                 color: "#000000",
-                marginBottom: "15px",
+                marginBottom: "12px",
                 textAlign: "center",
                 borderBottom: "1px solid #000000",
-                paddingBottom: "8px",
+                paddingBottom: "6px",
               }}
             >
-              البرامج التدريبية
-            </h3>
+              المعلومات الشخصية
+            </h2>
 
-            <div style={{ minHeight: "200px" }}>
-              {/* Course Groups */}
-              {courseGroups.length > 0 && (
-                <div style={{ marginBottom: "15px" }}>
-                  {courseGroups.map((group, index) => (
-                    <div
-                      key={group.id}
-                      style={{
-                        marginBottom: "15px",
-                        padding: "10px",
-                        border: "1px solid #000000",
-                        backgroundColor: index % 2 === 0 ? "#f8f9fa" : "white",
-                      }}
-                    >
-                      {group.title && (
-                        <h4
-                          style={{
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            color: "#000000",
-                            marginBottom: "8px",
-                            borderBottom: "1px dashed #000000",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          {group.title}
-                        </h4>
-                      )}
-                      <div style={{ paddingRight: group.title ? "15px" : "0" }}>
-                        {group.courses.map((course, courseIndex) => (
-                          <div
-                            key={course.id}
-                            style={{
-                              padding: "5px 0",
-                              fontSize: "13px",
-                              color: "#000000",
-                              borderBottom: "1px dotted #cccccc",
-                              display: "flex",
-                              alignItems: "center",
-                            }}
-                          >
-                            <span
-                              style={{
-                                marginLeft: "8px",
-                                fontSize: "12px",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              •
-                            </span>
-                            {course.name}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Individual Courses */}
-              {memberCourses.length > 0 && (
-                <div>
-                  {memberCourses.map((course, index) => (
-                    <div
-                      key={course.id}
-                      style={{
-                        padding: "8px",
-                        marginBottom: "5px",
-                        border: "1px solid #000000",
-                        backgroundColor: index % 2 === 0 ? "#f8f9fa" : "white",
-                        fontSize: "13px",
-                        color: "#000000",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        style={{
-                          marginLeft: "8px",
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        •
-                      </span>
-                      {course.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {memberCourses.length === 0 && courseGroups.length === 0 && (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                gap: "15px",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
                 <div
                   style={{
-                    textAlign: "center",
-                    color: "#666666",
-                    fontSize: "14px",
-                    padding: "30px",
-                    border: "1px dashed #cccccc",
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    marginBottom: "4px",
+                    color: "#000000",
                   }}
                 >
-                  لم يتم تحديد برامج تدريبية
+                  الاسم الكامل
                 </div>
-              )}
+                <div
+                  style={{
+                    padding: "6px",
+                    border: "1px solid #000000",
+                    backgroundColor: "white",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {member.name}
+                </div>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    marginBottom: "4px",
+                    color: "#000000",
+                  }}
+                >
+                  رقم الهاتف
+                </div>
+                <div
+                  style={{
+                    padding: "6px",
+                    border: "1px solid #000000",
+                    backgroundColor: "white",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {member.phone}
+                </div>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    marginBottom: "4px",
+                    color: "#000000",
+                  }}
+                >
+                  العمر
+                </div>
+                <div
+                  style={{
+                    padding: "6px",
+                    border: "1px solid #000000",
+                    backgroundColor: "white",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {member.age} سنة
+                </div>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "12px",
+                    marginBottom: "4px",
+                    color: "#000000",
+                  }}
+                >
+                  تاريخ الانضمام
+                </div>
+                <div
+                  style={{
+                    padding: "6px",
+                    border: "1px solid #000000",
+                    backgroundColor: "white",
+                    fontSize: "12px",
+                    fontWeight: "600",
+                  }}
+                >
+                  {formatDate(member.createdAt)}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Left Column - Diet Plans */}
+          {/* Main Content - Optimized Layout */}
           <div
+            className="content-columns"
             style={{
-              border: "2px solid #000000",
-              padding: "20px",
-              backgroundColor: "white",
+              display: "flex",
+              gap: "20px",
+              marginBottom: "25px",
+              pageBreakInside: "avoid",
             }}
           >
-            <h3
+            {/* Right Column - Training Programs */}
+            <div
+              className="print-section"
               style={{
-                fontSize: "16px",
+                flex: 1,
+                border: "2px solid #000000",
+                padding: "15px",
+                backgroundColor: "white",
+                pageBreakInside: "avoid",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  color: "#000000",
+                  marginBottom: "12px",
+                  textAlign: "center",
+                  borderBottom: "1px solid #000000",
+                  paddingBottom: "6px",
+                }}
+              >
+                البرامج التدريبية
+              </h3>
+
+              <div style={{ minHeight: "150px" }}>
+                {/* Course Groups */}
+                {courseGroups.length > 0 && (
+                  <div style={{ marginBottom: "10px" }}>
+                    {courseGroups.map((group, index) => (
+                      <div
+                        key={group.id}
+                        className="course-group"
+                        style={{
+                          marginBottom: "10px",
+                          padding: "8px",
+                          border: "1px solid #000000",
+                          backgroundColor:
+                            index % 2 === 0 ? "#f8f9fa" : "white",
+                          pageBreakInside: "avoid",
+                        }}
+                      >
+                        {group.title && (
+                          <h4
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              color: "#000000",
+                              marginBottom: "6px",
+                              borderBottom: "1px dashed #000000",
+                              paddingBottom: "3px",
+                            }}
+                          >
+                            {group.title}
+                          </h4>
+                        )}
+                        <div
+                          style={{ paddingRight: group.title ? "10px" : "0" }}
+                        >
+                          {group.courses.map((course) => (
+                            <div
+                              key={course.id}
+                              className="course-item"
+                              style={{
+                                padding: "3px 0",
+                                fontSize: "11px",
+                                color: "#000000",
+                                borderBottom: "1px dotted #cccccc",
+                                display: "flex",
+                                alignItems: "center",
+                                pageBreakInside: "avoid",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  marginLeft: "6px",
+                                  fontSize: "10px",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                •
+                              </span>
+                              {course.name}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Individual Courses */}
+                {memberCourses.length > 0 && (
+                  <div>
+                    {memberCourses.map((course, index) => (
+                      <div
+                        key={course.id}
+                        className="course-item"
+                        style={{
+                          padding: "6px",
+                          marginBottom: "4px",
+                          border: "1px solid #000000",
+                          backgroundColor:
+                            index % 2 === 0 ? "#f8f9fa" : "white",
+                          fontSize: "11px",
+                          color: "#000000",
+                          display: "flex",
+                          alignItems: "center",
+                          pageBreakInside: "avoid",
+                        }}
+                      >
+                        <span
+                          style={{
+                            marginLeft: "6px",
+                            fontSize: "10px",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          •
+                        </span>
+                        {course.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {memberCourses.length === 0 && courseGroups.length === 0 && (
+                  <div
+                    style={{
+                      textAlign: "center",
+                      color: "#666666",
+                      fontSize: "12px",
+                      padding: "20px",
+                      border: "1px dashed #cccccc",
+                    }}
+                  >
+                    لم يتم تحديد برامج تدريبية
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Left Column - Diet Plans */}
+            <div
+              className="print-section"
+              style={{
+                flex: 1,
+                border: "2px solid #000000",
+                padding: "15px",
+                backgroundColor: "white",
+                pageBreakInside: "avoid",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  color: "#000000",
+                  marginBottom: "12px",
+                  textAlign: "center",
+                  borderBottom: "1px solid #000000",
+                  paddingBottom: "6px",
+                }}
+              >
+                الأنظمة الغذائية
+              </h3>
+
+              <div style={{ minHeight: "150px" }}>
+                {/* Diet Plan Groups */}
+                {dietPlanGroups.length > 0 && (
+                  <div style={{ marginBottom: "10px" }}>
+                    {dietPlanGroups.map((group, index) => (
+                      <div
+                        key={group.id}
+                        className="diet-group"
+                        style={{
+                          marginBottom: "10px",
+                          padding: "8px",
+                          border: "1px solid #000000",
+                          backgroundColor:
+                            index % 2 === 0 ? "#f8f9fa" : "white",
+                          pageBreakInside: "avoid",
+                        }}
+                      >
+                        {group.title && (
+                          <h4
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                              color: "#000000",
+                              marginBottom: "6px",
+                              borderBottom: "1px dashed #000000",
+                              paddingBottom: "3px",
+                            }}
+                          >
+                            {group.title}
+                          </h4>
+                        )}
+                        <div
+                          style={{ paddingRight: group.title ? "10px" : "0" }}
+                        >
+                          {group.dietPlans.map((diet) => (
+                            <div
+                              key={diet.id}
+                              className="diet-item"
+                              style={{
+                                padding: "3px 0",
+                                fontSize: "11px",
+                                color: "#000000",
+                                borderBottom: "1px dotted #cccccc",
+                                display: "flex",
+                                alignItems: "center",
+                                pageBreakInside: "avoid",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  marginLeft: "6px",
+                                  fontSize: "10px",
+                                  fontWeight: "bold",
+                                }}
+                              >
+                                •
+                              </span>
+                              {diet.name}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Individual Diet Plans */}
+                {memberDietPlans.length > 0 && (
+                  <div>
+                    {memberDietPlans.map((diet, index) => (
+                      <div
+                        key={diet.id}
+                        className="diet-item"
+                        style={{
+                          padding: "6px",
+                          marginBottom: "4px",
+                          border: "1px solid #000000",
+                          backgroundColor:
+                            index % 2 === 0 ? "#f8f9fa" : "white",
+                          fontSize: "11px",
+                          color: "#000000",
+                          display: "flex",
+                          alignItems: "center",
+                          pageBreakInside: "avoid",
+                        }}
+                      >
+                        <span
+                          style={{
+                            marginLeft: "6px",
+                            fontSize: "10px",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          •
+                        </span>
+                        {diet.name}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {memberDietPlans.length === 0 &&
+                  dietPlanGroups.length === 0 && (
+                    <div
+                      style={{
+                        textAlign: "center",
+                        color: "#666666",
+                        fontSize: "12px",
+                        padding: "20px",
+                        border: "1px dashed #cccccc",
+                      }}
+                    >
+                      لم يتم تحديد أنظمة غذائية
+                    </div>
+                  )}
+              </div>
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div
+            className="print-section"
+            style={{
+              marginTop: "20px",
+              padding: "12px",
+              border: "2px solid #000000",
+              backgroundColor: "#f8f9fa",
+              textAlign: "center",
+              pageBreakInside: "avoid",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "12px",
                 fontWeight: "bold",
                 color: "#000000",
-                marginBottom: "15px",
-                textAlign: "center",
-                borderBottom: "1px solid #000000",
-                paddingBottom: "8px",
+                marginBottom: "6px",
               }}
             >
-              الأنظمة الغذائية
-            </h3>
-
-            <div style={{ minHeight: "200px" }}>
-              {/* Diet Plan Groups */}
-              {dietPlanGroups.length > 0 && (
-                <div style={{ marginBottom: "15px" }}>
-                  {dietPlanGroups.map((group, index) => (
-                    <div
-                      key={group.id}
-                      style={{
-                        marginBottom: "15px",
-                        padding: "10px",
-                        border: "1px solid #000000",
-                        backgroundColor: index % 2 === 0 ? "#f8f9fa" : "white",
-                      }}
-                    >
-                      {group.title && (
-                        <h4
-                          style={{
-                            fontSize: "14px",
-                            fontWeight: "bold",
-                            color: "#000000",
-                            marginBottom: "8px",
-                            borderBottom: "1px dashed #000000",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          {group.title}
-                        </h4>
-                      )}
-                      <div style={{ paddingRight: group.title ? "15px" : "0" }}>
-                        {group.dietPlans.map((diet, dietIndex) => (
-                          <div
-                            key={diet.id}
-                            style={{
-                              padding: "5px 0",
-                              fontSize: "13px",
-                              color: "#000000",
-                              borderBottom: "1px dotted #cccccc",
-                              display: "flex",
-                              alignItems: "center",
-                            }}
-                          >
-                            <span
-                              style={{
-                                marginLeft: "8px",
-                                fontSize: "12px",
-                                fontWeight: "bold",
-                              }}
-                            >
-                              •
-                            </span>
-                            {diet.name}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Individual Diet Plans */}
-              {memberDietPlans.length > 0 && (
-                <div>
-                  {memberDietPlans.map((diet, index) => (
-                    <div
-                      key={diet.id}
-                      style={{
-                        padding: "8px",
-                        marginBottom: "5px",
-                        border: "1px solid #000000",
-                        backgroundColor: index % 2 === 0 ? "#f8f9fa" : "white",
-                        fontSize: "13px",
-                        color: "#000000",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <span
-                        style={{
-                          marginLeft: "8px",
-                          fontSize: "12px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        •
-                      </span>
-                      {diet.name}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {memberDietPlans.length === 0 && dietPlanGroups.length === 0 && (
-                <div
-                  style={{
-                    textAlign: "center",
-                    color: "#666666",
-                    fontSize: "14px",
-                    padding: "30px",
-                    border: "1px dashed #cccccc",
-                  }}
-                >
-                  لم يتم تحديد أنظمة غذائية
-                </div>
-              )}
+              نتمنى لك رحلة تدريبية موفقة
             </div>
-          </div>
-        </div>
+            <div
+              style={{
+                fontSize: "10px",
+                color: "#000000",
+                marginBottom: "6px",
+              }}
+            >
+              للاستفسارات والدعم الفني، يرجى التواصل مع إدارة الصالة
+            </div>
+            <div
+              style={{
+                fontSize: "9px",
+                color: "#666666",
+                borderTop: "1px solid #000000",
+                paddingTop: "6px",
+                marginTop: "6px",
+              }}
+            >
+              تاريخ الإصدار: {formatDate(new Date())} | رقم العضوية: {member.id}
+            </div>
 
-        {/* Footer */}
-        <div
-          style={{
-            marginTop: "30px",
-            padding: "15px",
-            border: "2px solid #000000",
-            backgroundColor: "#f8f9fa",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: "bold",
-              color: "#000000",
-              marginBottom: "8px",
-            }}
-          >
-            نتمنى لك رحلة تدريبية موفقة
-          </div>
-          <div
-            style={{
-              fontSize: "12px",
-              color: "#000000",
-              marginBottom: "8px",
-            }}
-          >
-            للاستفسارات والدعم الفني، يرجى التواصل مع إدارة الصالة
-          </div>
-          <div
-            style={{
-              fontSize: "11px",
-              color: "#666666",
-              borderTop: "1px solid #000000",
-              paddingTop: "8px",
-              marginTop: "8px",
-            }}
-          >
-            تاريخ الإصدار: {formatDate(new Date())} | رقم العضوية: {member.id}
-          </div>
-
-          {/* Developer Credit */}
-          <div
-            style={{
-              fontSize: "8px",
-              color: "#999999",
-              marginTop: "10px",
-              paddingTop: "5px",
-              borderTop: "1px solid #cccccc",
-              lineHeight: "1.2",
-            }}
-          >
-            صمم البرنامج بواسطة حمزه احمد للتواصل واتساب ٠٧٨٠٠٦٥٧٨٢٢
+            {/* Developer Credit */}
+            <div
+              style={{
+                fontSize: "7px",
+                color: "#999999",
+                marginTop: "8px",
+                paddingTop: "4px",
+                borderTop: "1px solid #cccccc",
+                lineHeight: "1.2",
+              }}
+            >
+              صمم البرنامج بواسطة حمزه احمد للتواصل واتساب ٠٧٨٠٠٦٥٧٨٢٢
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
