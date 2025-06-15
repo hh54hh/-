@@ -261,6 +261,30 @@ export default function Layout() {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
+              {/* Settings Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="hidden sm:flex items-center gap-2 text-gray-700 border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600"
+                  >
+                    <Settings className="h-4 w-4" />
+                    الضبط
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuItem onClick={handleBackupDownload}>
+                    <Download className="h-4 w-4 mr-2" />
+                    تنزيل نسخة احتياطية (JSON)
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleBackupPrint}>
+                    <FileText className="h-4 w-4 mr-2" />
+                    طباعة النسخة الاحتياطية
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <Button
                 variant="outline"
                 size="sm"
