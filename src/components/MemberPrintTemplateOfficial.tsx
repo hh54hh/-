@@ -70,36 +70,60 @@ export const MemberPrintTemplateOfficial: React.FC<
           padding: "20mm",
         }}
       >
-        {/* Header with Gym Name Only */}
+        {/* Header with Gym Name and Logo */}
         <div
           style={{
             textAlign: "center",
             marginBottom: "30px",
             paddingBottom: "20px",
             borderBottom: "3px solid #000000",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "20px",
           }}
         >
-          <h1
-            style={{
-              fontSize: "32px",
-              fontWeight: "bold",
-              color: "#000000",
-              margin: "0 0 10px 0",
-              letterSpacing: "2px",
-            }}
-          >
-            صالة حسام لكمال الأجسام والرشاقة
-          </h1>
-          <p
-            style={{
-              fontSize: "18px",
-              color: "#000000",
-              margin: "0",
-              fontWeight: "normal",
-            }}
-          >
-            بطاقة عضوية رسمية
-          </p>
+          <div style={{ flex: 1, textAlign: "right" }}>
+            <h1
+              style={{
+                fontSize: "32px",
+                fontWeight: "bold",
+                color: "#000000",
+                margin: "0 0 10px 0",
+                letterSpacing: "2px",
+              }}
+            >
+              صالة حسام لكمال الأجسام والرشاقة
+            </h1>
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#000000",
+                margin: "0",
+                fontWeight: "normal",
+              }}
+            >
+              بطاقة عضوية رسمية
+            </p>
+          </div>
+          <div style={{ flexShrink: 0 }}>
+            <img
+              src="/placeholder.svg"
+              alt="شعار الصالة"
+              style={{
+                width: "80px",
+                height: "80px",
+                borderRadius: "50%",
+                border: "3px solid #000000",
+                objectFit: "cover",
+                backgroundColor: "#f8f9fa",
+              }}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = "none";
+              }}
+            />
+          </div>
         </div>
 
         {/* Member Information - Horizontal Layout */}
