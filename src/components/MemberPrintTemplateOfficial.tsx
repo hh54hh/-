@@ -53,23 +53,68 @@ export const MemberPrintTemplateOfficial: React.FC<
   };
 
   return (
-    <div className="print-container" style={{ display: "none" }}>
-      <div
-        id="member-print-content"
-        className="bg-white font-arabic"
-        style={{
-          width: "210mm",
-          minHeight: "297mm",
-          margin: "0 auto",
-          fontSize: "14px",
-          lineHeight: "1.4",
-          direction: "rtl",
-          fontFamily: "Arial, sans-serif",
-          backgroundColor: "white",
-          color: "#000000",
-          padding: "20mm",
-        }}
-      >
+    <>
+      <style>{`
+        @media print {
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+
+          .print-container {
+            display: block !important;
+          }
+
+          #member-print-content {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .course-group, .diet-group {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 10px;
+          }
+
+          .course-item, .diet-item {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .print-section {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          .member-info-grid {
+            page-break-inside: avoid;
+            break-inside: avoid;
+          }
+
+          @page {
+            margin: 15mm;
+            size: A4;
+          }
+        }
+      `}</style>
+      <div className="print-container" style={{ display: "none" }}>
+        <div
+          id="member-print-content"
+          className="bg-white font-arabic"
+          style={{
+            width: "210mm",
+            minHeight: "297mm",
+            margin: "0 auto",
+            fontSize: "14px",
+            lineHeight: "1.4",
+            direction: "rtl",
+            fontFamily: "Arial, sans-serif",
+            backgroundColor: "white",
+            color: "#000000",
+            padding: "15mm",
+            pageBreakInside: "avoid",
+          }}
+        >
         {/* Header with Gym Name and Logo */}
         <div
           style={{
