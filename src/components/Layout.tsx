@@ -10,8 +10,23 @@ import {
   Dumbbell,
   Menu,
   X,
+  Settings,
+  Download,
+  FileText,
 } from "lucide-react";
-import { logout } from "@/lib/storage-new";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
+import {
+  logout,
+  getMembers,
+  getCourses,
+  getDietPlans,
+} from "@/lib/storage-new";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
